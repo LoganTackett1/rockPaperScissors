@@ -30,13 +30,13 @@ function guessToNum(guess) {
 function playRound(playerSelection,computerSelection) {
     let playerSelect = playerSelection.toLowerCase();
     if (playerSelect == computerSelection) {
-        return "It's a tie!";
+        return ["It's a tie!",0,0];
     } else if ((guessToNum(playerSelect)+1)%3 == guessToNum(computerSelection)) {
-        return `You Won! ${playerSelect} beats ${computerSelection}.`;
+        return [`You Won! ${playerSelect} beats ${computerSelection}.`,1,0];
     } else if ((guessToNum(playerSelect)+2)%3 == guessToNum(computerSelection)) {
-        return `You Lost. ${computerSelection} beats ${playerSelect}.`;
+        return [`You Lost. ${computerSelection} beats ${playerSelect}.`,0,1];
     } else {
-        console.log("Something broke again!");
+        return "Something broke again!";
     }
 }
 
@@ -46,16 +46,10 @@ function game() {
     for (let i=1; i<=5; i++) {
         let playerChoice = prompt("Rock, Paper, or Scissors?");
         let computerChoice = getComputerChoice();
-        console.log(playRound(playerChoice,computerChoice));
-        if (playerChoice == computerChoice) {
-            console.log("No Score Change.");
-        } else if ((guessToNum(playerChoice)+1)%3 == guessToNum(computerChoice)) {
-            playerScore++;
-        } else if ((guessToNum(playerChoice)+2)%3 == guessToNum(computerChoice)) {
-            computerScore++;
-        } else {
-            console.log("Something broke again!");
-        }
+        let result = playRound(playerChoice,computerChoice);
+        console.log(result[0]);
+        playerScore += result[1];
+        computerScore += result[2];
         console.log(`score: Player ${playerScore}, Computer ${computerScore}`);
     }
     if (playerScore == computerScore) {
