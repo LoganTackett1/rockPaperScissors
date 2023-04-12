@@ -17,9 +17,9 @@ function getComputerChoice() {
 
 function guessToNum(guess) {
     if (guess=="rock") {
-        return 0;
-    } else if (guess=="paper") {
         return 1;
+    } else if (guess=="paper") {
+        return 0;
     } else if (guess=="scissors") {
         return 2;
     } else {
@@ -34,7 +34,7 @@ function playRound(playerSelection,computerSelection) {
     } else if ((guessToNum(playerSelect)+1)%3 == guessToNum(computerSelection)) {
         return `You Won! ${playerSelect} beats ${computerSelection}.`;
     } else if ((guessToNum(playerSelect)+2)%3 == guessToNum(computerSelection)) {
-        return `You Lost. ${playerSelect} beats ${computerSelection}.`;
+        return `You Lost. ${computerSelection} beats ${playerSelect}.`;
     } else {
         console.log("Something broke again!");
     }
