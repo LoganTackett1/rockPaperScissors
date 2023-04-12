@@ -1,5 +1,5 @@
 function getComputerChoice() {
-    let randNum = Math.floor(Math.random()*10);
+    let randNum = Math.floor(Math.random()*100);
     switch (randNum % 3) {
         case 0:
             return "Rock";
