@@ -54,10 +54,22 @@ const divResults = document.querySelector("#results");
 divResults.innerHTML = `Player: ${playerScore} || Computer: ${computerScore}`;
 
 function game(playerChoice) {
+    if (playerScore == 5 || computerScore == 5) {
+        playerScore = 0;
+        computerScore = 0;
+    }
     let result = playRound(playerChoice,getComputerChoice());
     playerScore += result[1];
     computerScore += result[2];
-    divResults.innerHTML = `<p>${result[0]}</p>
+    if (playerScore == 5 || computerScore == 5) {
+        divResults.innerHTML = 
+        `<p>${result[0]}</p>
+        <p>Player: ${playerScore} || Computer: ${computerScore}</p>
+        <p>${(playerScore>computerScore ? "You won!":"You Lost")}</p>`;
+    } else {
+    divResults.innerHTML = 
+        `<p>${result[0]}</p>
         <p>Player: ${playerScore} || Computer: ${computerScore}</p>`;
+    }
 }
 
