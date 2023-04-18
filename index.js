@@ -40,6 +40,12 @@ function playRound(playerSelection,computerSelection) {
     }
 }
 
+const gameBtns = document.querySelectorAll('button');
+
+gameBtns.forEach(button => button.addEventListener('click',e => {
+    console.log((playRound(button.id,getComputerChoice())));
+}));
+
 function game() {
     let playerScore = 0;
     let computerScore = 0;
@@ -61,4 +67,3 @@ function game() {
     }
 }
 
-game();
